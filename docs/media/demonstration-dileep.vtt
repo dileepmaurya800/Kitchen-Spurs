@@ -1,0 +1,85 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:11.090
+A restaurant analytics system connects browser activity, server events, and dashboard reporting.
+
+2
+00:00:11.090 --> 00:00:22.180
+The application uses React, Express, SQLite, and reusable tracking clients.
+
+3
+00:00:22.180 --> 00:00:31.533
+Opening the menu generates a page-view event through the browser SDK.
+
+4
+00:00:31.533 --> 00:00:40.887
+An anonymous visitor ID links activity; session IDs rotate after thirty minutes of inactivity.
+
+5
+00:00:40.887 --> 00:00:50.240
+Page tracking excludes URL query parameters and fragments.
+
+6
+00:00:50.240 --> 00:01:01.140
+Filtering categories and adding items generate custom browser events.
+
+7
+00:01:01.140 --> 00:01:12.040
+The pizza and citrus cooler total ₹640. Events are queued and delivered in batches.
+
+8
+00:01:12.040 --> 00:01:22.940
+Transient delivery failures retry with the same event IDs, preventing duplicate persistence.
+
+9
+00:01:22.940 --> 00:01:27.440
+The server calculates the ₹640 order price from its own menu.
+
+10
+00:01:27.440 --> 00:01:31.940
+Order and server event persist in one transaction; retrying the same order key does not create a duplicate.
+
+11
+00:01:31.940 --> 00:01:36.440
+Dashboard metrics are calculated from stored events, rather than browser-local counters.
+
+12
+00:01:36.440 --> 00:01:40.940
+The report includes the earlier ₹760 review order and the new ₹640 order.
+
+13
+00:01:40.940 --> 00:01:44.940
+Cart actions are browser events; order_created is a trusted server event.
+
+14
+00:01:44.940 --> 00:01:48.940
+The browser cannot claim order_created. Trusted server ingestion uses a separate private credential.
+
+15
+00:01:48.940 --> 00:01:54.940
+The Today preset and native date pickers change the queried UTC reporting range.
+
+16
+00:01:54.940 --> 00:02:00.940
+Selecting a day with no activity returns zero counts and empty lists. The complete end date is included.
+
+17
+00:02:00.940 --> 00:02:04.940
+Stable event IDs support deduplication; a transaction protects local order/event consistency.
+
+18
+00:02:04.940 --> 00:02:08.940
+SQLite has a single writer and synchronous queries. Browser delivery is best effort.
+
+19
+00:02:08.940 --> 00:02:12.940
+Production work includes user authentication, durable outboxes, retention, monitoring, and backups.
+
+20
+00:02:12.940 --> 00:02:17.940
+Install Node 24, run npm ci, and then npm run dev.
+
+21
+00:02:17.940 --> 00:02:22.940
+Fourteen tests, formatting checks, the production build, and repository CI passed. See README for setup and limitations.

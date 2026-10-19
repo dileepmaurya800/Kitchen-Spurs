@@ -1,6 +1,6 @@
 # Demo walkthrough (about 3 minutes)
 
-This is a recording script and repeatable review guide. A completed [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) is now available, using edited live browser footage and synthetic narration. Its actual sequence and narration are documented in [the transcript](VIDEO-TRANSCRIPT.md).
+This is a recording script and repeatable review guide. The completed [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) uses edited live browser footage and Dileep Maurya's supplied recording for its opening, followed by captioned explanations without AI speech. Its actual sequence and technical summaries are documented in [the video guide](VIDEO-TRANSCRIPT.md).
 
 ## 0:00–0:30 · Setup and scope
 
