@@ -1,0 +1,27 @@
+{
+  "name": "kitchen-spurs-analytics",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env server/index.js --dev",
+    "build": "vite build",
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "test": "node --test tests/*.test.js",
+    "seed": "node --env-file-if-exists=.env scripts/seed.js",
+    "format": "prettier --write src sdk server scripts tests index.html package.json",
+    "format:check": "prettier --check src sdk server scripts tests index.html package.json"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.10",
+    "vite": "^7.1.0"
+  }
+}
