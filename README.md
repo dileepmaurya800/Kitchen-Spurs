@@ -4,11 +4,17 @@ A working restaurant demo with reusable browser and server SDKs, event ingestion
 
 **Repository:** https://github.com/dileepmaurya800/Kitchen-Spurs
 
-**[Watch the demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/)** · [Download MP4](https://github.com/dileepmaurya800/Kitchen-Spurs/raw/refs/heads/master/docs/media/demonstration.mp4) · 4 min 05 sec, edited live browser capture with synthetic narration and English subtitles.
+## Demonstration video
+
+**[▶ Watch online — no sign-in or download required](https://dileepmaurya800.github.io/Kitchen-Spurs/)**
+
+4 min 05 sec. Shows restaurant interactions, order creation, dashboard reporting, date filtering, and the main engineering decisions. Edited live browser capture with synthetic narration and English subtitles.
+
+[![Watch the Kitchen Spurs demonstration video](docs/media/video-poster.jpg)](https://dileepmaurya800.github.io/Kitchen-Spurs/)
+
+[Download MP4](https://dileepmaurya800.github.io/Kitchen-Spurs/media/demonstration.mp4) · [Read the transcript](docs/VIDEO-TRANSCRIPT.md)
 
 Built by **Dileep Maurya · Senior Software Engineer · 5+ years of experience**. AI tools assisted implementation and verification. The engineering decisions and limitations below describe the submitted system.
-
-![Analytics dashboard](docs/media/dashboard-full.jpg)
 
 ## Run locally
 
