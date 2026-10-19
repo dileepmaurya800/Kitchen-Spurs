@@ -4,6 +4,8 @@ A working restaurant demo with reusable browser and server SDKs, event ingestion
 
 **Repository:** https://github.com/dileepmaurya800/Kitchen-Spurs
 
+**[Watch the demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/)** · [Download MP4](https://github.com/dileepmaurya800/Kitchen-Spurs/raw/refs/heads/master/docs/media/demonstration.mp4) · 4 min 05 sec, edited live browser capture with synthetic narration and English subtitles.
+
 Built by **Dileep Maurya · Senior Software Engineer · 5+ years of experience**. AI tools assisted implementation and verification. The engineering decisions and limitations below describe the submitted system.
 
 ![Analytics dashboard](docs/media/dashboard-full.jpg)
@@ -223,7 +225,7 @@ The order and its `order_created` event are committed in **the same database tra
 - [Personal introduction outline](docs/INTRODUCTION.md)
 - [Verification notes](docs/VERIFICATION.md)
 
-**Videos are not included, as requested.** If the reviewer still requires them, record the walkthrough and your personal introduction, upload them using reviewer-accessible sharing, and add the links here. Do not claim the videos or their permissions have been verified until those links exist.
+The [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) shows real browser interactions, order creation, dashboard reporting and date filtering, followed by the main engineering decisions. It uses synthetic narration and includes English subtitles. A [transcript](docs/VIDEO-TRANSCRIPT.md) and [MP4 download](docs/media/demonstration.mp4) are included. A personal introduction recording is not included; that remains a separate recording in the candidate's own voice.
 
 ## References
 

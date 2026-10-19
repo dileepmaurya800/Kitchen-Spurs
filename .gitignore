@@ -4,3 +4,5 @@ data/
 .env
 *.log
 test-results/
+.video-work/
+.video-tools/
