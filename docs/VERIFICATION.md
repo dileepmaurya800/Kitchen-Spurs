@@ -26,4 +26,10 @@ These values describe the captured session, not hardcoded values or expected tot
 
 ## Boundaries
 
-No production load test, hosted deployment, external video publication, or personal introduction recording was performed. Repository access and final checks are recorded only after they have been verified. Screenshots show actual application state.
+No production load test, hosted application backend, or personal introduction recording was performed. Screenshots show actual application state.
+
+## Demonstration recording
+
+An edited live browser recording with synthetic narration was added on 19 October 2026. It includes a new ₹640 order, dashboard activity, native date-picker filtering, empty results, and technical explanation cards. The video lasts 244.76 seconds, uses H.264 video and AAC audio, and includes English subtitles.
+
+The complete MP4 decoded without errors. Sample frames across all ten chapters were visually inspected. The public [playback page](https://dileepmaurya800.github.io/Kitchen-Spurs/) returned HTTP 200 without authentication. In-browser playback was verified: the video loaded with no media error and its playback time advanced beyond 14 seconds. GitHub Pages deployment and repository CI both succeeded for the video publication commit.
