@@ -1,43 +1,49 @@
-# Demonstration video guide
+# Demonstration video transcript
 
-[Watch online](https://dileepmaurya800.github.io/Kitchen-Spurs/) · [Download MP4](media/demonstration-dileep.mp4)
+[Watch online](https://dileepmaurya800.github.io/Kitchen-Spurs/) · [Download MP4](media/demonstration-full-voice.mp4)
 
-Duration: approximately 2 minutes 23 seconds. The first 83 seconds use Dileep Maurya's original supplied recording, with mild noise reduction and level normalization. Subsequent steps use on-screen explanations without AI narration. These guide captions summarize the technical points; they are not a verbatim speech transcript.
+Duration: 4 minutes 5 seconds. Every section has English narration. The speech is synthesized using local AI voice matching based on Dileep Maurya's authorized reference recording; similarity is approximate. The reference microphone audio is not mixed into the output.
 
-The recording covers the introduction, page tracking, and custom cart events. The visual continuation demonstrates order creation, reporting, date filtering, and engineering decisions. The dashboard contains the new ₹640 order plus the earlier ₹760 review order.
+Voice conversion uses [OpenVoice V2 by MyShell and MIT](https://github.com/myshell-ai/OpenVoice), released under the MIT license. Model provenance watermarking remains enabled. Reference recordings and private voice embeddings are excluded from the repository.
+
+The dashboard contains the new ₹640 order and the earlier ₹760 review order. The video shows the real local application, not a hosted live backend.
 
 ## 00:00 · Kitchen Spurs | Analytics SDK & Dashboard
 
-A restaurant analytics system connects browser activity, server events, and dashboard reporting. The application uses React, Express, SQLite, and reusable tracking clients.
+This demonstration shows the Kitchen Spurs analytics assignment running locally. It connects a React restaurant, reusable browser and server tracking clients, event ingestion, SQLite storage, and an analytics dashboard. This is an edited recording of the working application, with synthetic narration.
 
-## 00:22 · 1. Track page navigation
+## 00:19 · 1. Track real page navigation
 
-Opening the menu generates a page-view event through the browser SDK. An anonymous visitor ID links activity; session IDs rotate after thirty minutes of inactivity. Page tracking excludes URL query parameters and fragments.
+Navigating to the menu generates a page view through the browser SDK. The application calls the tracker after each actual route change. Query strings and fragments are excluded. A random visitor identifier persists in local storage, while a session identifier rotates after thirty minutes of inactivity. These identifiers represent anonymous browser activity, rather than verified people.
 
-## 00:50 · 2. Capture custom events and queue delivery
+## 00:43 · 2. Capture custom browser events
 
-Filtering categories and adding items generate custom browser events. The pizza and citrus cooler total ₹640. Events are queued and delivered in batches. Transient delivery failures retry with the same event IDs, preventing duplicate persistence.
+Category filtering and adding items generate explicit custom events. Here, a pizza and citrus cooler produce a cart total of six hundred and forty rupees. The SDK batches delivery, normally flushing every three seconds. Its bounded session storage queue can survive reloads. Transient failures retry with backoff and the same event identifiers, allowing ingestion to deduplicate replays.
 
-## 01:22 · 3. Create the order | On-screen explanation
+## 01:09 · 3. Create an order and its server event atomically
 
-The server calculates the ₹640 order price from its own menu. Order and server event persist in one transaction; retrying the same order key does not create a duplicate.
+Placing the order calls the business API. Prices are calculated from the server menu, not trusted from the browser. The order and its order created event are committed in one SQLite transaction. If event persistence fails, the order rolls back too. A repeated request with the same idempotency key returns the existing order instead of creating another one. No payment is collected in this demonstration.
 
-## 01:31 · 4. Query persisted analytics | On-screen explanation
+## 01:34 · 4. Query persisted analytics
 
-Dashboard metrics are calculated from stored events, rather than browser-local counters. The report includes the earlier ₹760 review order and the new ₹640 order.
+The dashboard reads authenticated API reports from persisted events. It shows page views, distinct anonymous visitor identifiers, total events, orders, and order value. The two orders shown include an earlier review order and the new six hundred and forty rupee order. These values come from the database. Dashboard navigation itself is excluded from browser page tracking.
 
-## 01:40 · 5. Connect browser and trusted server events
+## 01:58 · 5. Connect browser activity to trusted business events
 
-Cart actions are browser events; order_created is a trusted server event. The browser cannot claim order_created. Trusted server ingestion uses a separate private credential.
+Popular pages and the event breakdown reveal how people use the restaurant. Recent activity shows the new order as a server event alongside browser checkout and cart events. The same anonymous visitor identifier connects the flow. The browser cannot submit an order created event. The ingestion endpoint assigns the source, and trusted server ingestion requires a separate private credential.
 
-## 01:48 · 6. Check date boundaries and empty results
+## 02:21 · 6. Verify date filters and empty states
 
-The Today preset and native date pickers change the queried UTC reporting range. Selecting a day with no activity returns zero counts and empty lists. The complete end date is included.
+The Today preset narrows the report to one UTC day. Next, both date pickers select the previous day, which has no events. All metrics become zero and the activity lists show empty states. Date boundaries are inclusive calendar dates, implemented in SQL with an inclusive start and an exclusive end at the following midnight.
 
-## 02:00 · Engineering decisions and limits
+## 02:42 · 7. Restore the report and explain delivery guarantees
 
-Stable event IDs support deduplication; a transaction protects local order/event consistency. SQLite has a single writer and synchronous queries. Browser delivery is best effort. Production work includes user authentication, durable outboxes, retention, monitoring, and backups.
+Restoring the seven day range brings the recorded activity back. Stable event identifiers make retried persistence idempotent, but browser delivery remains best effort. Closing a tab, clearing storage, or exhausting the queue can lose events. The standalone server helper uses bounded authenticated retries. External business systems should persist an outbox with their own business transaction for crash safe delivery.
 
-## 02:12 · Run and review the submission
+## 03:08 · Engineering decisions and limits
 
-Install Node 24, run npm ci, and then npm run dev. Fourteen tests, formatting checks, the production build, and repository CI passed. See README for setup and limitations.
+SQLite keeps setup simple and provides real transactions, but synchronous queries and a single writer limit throughput. Payload validation, body and batch limits, timestamp checks, origin restrictions, and rate limiting bound abuse. A public browser key is only a project identifier. Before production, add proper user authentication, retention controls, monitoring, backups, and distributed ingestion and rate limiting.
+
+## 03:35 · Run and review the submission
+
+The public repository includes setup instructions, SDK examples, architecture, assumptions, and known limitations. With Node twenty four, run npm ci, then npm run dev. Fourteen automated tests, the production build, formatting checks, and GitHub continuous integration passed. The tests cover retries, deduplication, order replay, transaction rollback, authentication, date boundaries, and persistence. Thank you for reviewing the demonstration.

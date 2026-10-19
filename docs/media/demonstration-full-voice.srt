@@ -1,0 +1,187 @@
+1
+00:00:00,100 --> 00:00:04,809
+This demonstration shows the Kitchen Spurs analytics assignment running locally.
+
+2
+00:00:04,809 --> 00:00:12,933
+It connects a React restaurant, reusable browser and server tracking clients, event ingestion, SQLite storage, and an analytics dashboard.
+
+3
+00:00:12,933 --> 00:00:17,701
+This is an edited recording of the working application, with synthetic narration.
+
+4
+00:00:19,100 --> 00:00:23,235
+Navigating to the menu generates a page view through the browser SDK.
+
+5
+00:00:23,235 --> 00:00:27,130
+The application calls the tracker after each actual route change.
+
+6
+00:00:27,130 --> 00:00:29,587
+Query strings and fragments are excluded.
+
+7
+00:00:29,587 --> 00:00:37,077
+A random visitor identifier persists in local storage, while a session identifier rotates after thirty minutes of inactivity.
+
+8
+00:00:37,077 --> 00:00:42,111
+These identifiers represent anonymous browser activity, rather than verified people.
+
+9
+00:00:43,100 --> 00:00:47,342
+Category filtering and adding items generate explicit custom events.
+
+10
+00:00:47,342 --> 00:00:52,645
+Here, a pizza and citrus cooler produce a cart total of six hundred and forty rupees.
+
+11
+00:00:52,645 --> 00:00:56,637
+The SDK batches delivery, normally flushing every three seconds.
+
+12
+00:00:56,637 --> 00:01:00,006
+Its bounded session storage queue can survive reloads.
+
+13
+00:01:00,006 --> 00:01:06,993
+Transient failures retry with backoff and the same event identifiers, allowing ingestion to deduplicate replays.
+
+14
+00:01:09,100 --> 00:01:11,543
+Placing the order calls the business API.
+
+15
+00:01:11,543 --> 00:01:15,893
+Prices are calculated from the server menu, not trusted from the browser.
+
+16
+00:01:15,893 --> 00:01:20,542
+The order and its order created event are committed in one SQLite transaction.
+
+17
+00:01:20,542 --> 00:01:23,700
+If event persistence fails, the order rolls back too.
+
+18
+00:01:23,700 --> 00:01:30,136
+A repeated request with the same idempotency key returns the existing order instead of creating another one.
+
+19
+00:01:30,136 --> 00:01:32,877
+No payment is collected in this demonstration.
+
+20
+00:01:34,100 --> 00:01:38,210
+The dashboard reads authenticated API reports from persisted events.
+
+21
+00:01:38,210 --> 00:01:44,194
+It shows page views, distinct anonymous visitor identifiers, total events, orders, and order value.
+
+22
+00:01:44,194 --> 00:01:50,177
+The two orders shown include an earlier review order and the new six hundred and forty rupee order.
+
+23
+00:01:50,177 --> 00:01:52,353
+These values come from the database.
+
+24
+00:01:52,353 --> 00:01:56,403
+Dashboard navigation itself is excluded from browser page tracking.
+
+25
+00:01:58,100 --> 00:02:02,344
+Popular pages and the event breakdown reveal how people use the restaurant.
+
+26
+00:02:02,344 --> 00:02:07,832
+Recent activity shows the new order as a server event alongside browser checkout and cart events.
+
+27
+00:02:07,832 --> 00:02:11,001
+The same anonymous visitor identifier connects the flow.
+
+28
+00:02:11,001 --> 00:02:13,774
+The browser cannot submit an order created event.
+
+29
+00:02:13,774 --> 00:02:20,054
+The ingestion endpoint assigns the source, and trusted server ingestion requires a separate private credential.
+
+30
+00:02:21,100 --> 00:02:24,180
+The Today preset narrows the report to one UTC day.
+
+31
+00:02:24,180 --> 00:02:28,348
+Next, both date pickers select the previous day, which has no events.
+
+32
+00:02:28,348 --> 00:02:32,274
+All metrics become zero and the activity lists show empty states.
+
+33
+00:02:32,274 --> 00:02:40,489
+Date boundaries are inclusive calendar dates, implemented in SQL with an inclusive start and an exclusive end at the following midnight.
+
+34
+00:02:42,100 --> 00:02:45,826
+Restoring the seven day range brings the recorded activity back.
+
+35
+00:02:45,826 --> 00:02:51,822
+Stable event identifiers make retried persistence idempotent, but browser delivery remains best effort.
+
+36
+00:02:51,822 --> 00:02:56,072
+Closing a tab, clearing storage, or exhausting the queue can lose events.
+
+37
+00:02:56,072 --> 00:02:59,798
+The standalone server helper uses bounded authenticated retries.
+
+38
+00:02:59,798 --> 00:03:06,260
+External business systems should persist an outbox with their own business transaction for crash safe delivery.
+
+39
+00:03:08,100 --> 00:03:15,435
+SQLite keeps setup simple and provides real transactions, but synchronous queries and a single writer limit throughput.
+
+40
+00:03:15,435 --> 00:03:22,339
+Payload validation, body and batch limits, timestamp checks, origin restrictions, and rate limiting bound abuse.
+
+41
+00:03:22,339 --> 00:03:25,421
+A public browser key is only a project identifier.
+
+42
+00:03:25,421 --> 00:03:33,804
+Before production, add proper user authentication, retention controls, monitoring, backups, and distributed ingestion and rate limiting.
+
+43
+00:03:35,100 --> 00:03:42,471
+The public repository includes setup instructions, SDK examples, architecture, assumptions, and known limitations.
+
+44
+00:03:42,471 --> 00:03:45,833
+With Node twenty four, run npm ci, then npm run dev.
+
+45
+00:03:45,833 --> 00:03:52,816
+Fourteen automated tests, the production build, formatting checks, and GitHub continuous integration passed.
+
+46
+00:03:52,816 --> 00:04:00,898
+The tests cover retries, deduplication, order replay, transaction rollback, authentication, date boundaries, and persistence.
+
+47
+00:04:00,898 --> 00:04:03,614
+Thank you for reviewing the demonstration.

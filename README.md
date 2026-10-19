@@ -8,11 +8,11 @@ A working restaurant demo with reusable browser and server SDKs, event ingestion
 
 **[▶ Watch online — no sign-in or download required](https://dileepmaurya800.github.io/Kitchen-Spurs/)**
 
-2 min 23 sec. Shows restaurant interactions, order creation, dashboard reporting, date filtering, and the main engineering decisions. The opening uses **Dileep Maurya's own recorded voice**; the remaining steps use on-screen explanations without AI speech. English guide captions summarize the technical points.
+4 min 05 sec. Shows restaurant interactions, order creation, dashboard reporting, date filtering, and engineering decisions. **All sections have English narration, including Setup and closing.** The narration uses local AI voice matching based on Dileep Maurya's authorized reference recording, with clean synthesized speech. Voice similarity is approximate; this is not a continuous original spoken recording.
 
 [![Watch the Kitchen Spurs demonstration video](docs/media/video-poster.jpg)](https://dileepmaurya800.github.io/Kitchen-Spurs/)
 
-[Download MP4](https://dileepmaurya800.github.io/Kitchen-Spurs/media/demonstration-dileep.mp4) · [Read the video guide](docs/VIDEO-TRANSCRIPT.md)
+[Download MP4](https://dileepmaurya800.github.io/Kitchen-Spurs/media/demonstration-full-voice.mp4) · [Read the video guide](docs/VIDEO-TRANSCRIPT.md)
 
 Built by **Dileep Maurya · Senior Software Engineer · 5+ years of experience**. AI tools assisted implementation and verification. The engineering decisions and limitations below describe the submitted system.
 
@@ -231,7 +231,7 @@ The order and its `order_created` event are committed in **the same database tra
 - [Personal introduction outline](docs/INTRODUCTION.md)
 - [Verification notes](docs/VERIFICATION.md)
 
-The [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) shows real browser interactions, order creation, dashboard reporting and date filtering, followed by the main engineering decisions. Its opening uses Dileep Maurya's supplied voice recording, lightly cleaned and normalized. After the recording ends, the walkthrough continues with on-screen explanations; no generated speech is used. English guide captions are summaries rather than a verbatim transcript. A [video guide](docs/VIDEO-TRANSCRIPT.md) and [MP4 download](docs/media/demonstration-dileep.mp4) are included. A separate personal introduction video covering background and experience is not included.
+The [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) shows real browser interactions, order creation, dashboard reporting and date filtering, followed by the main engineering decisions. The complete English narration is synthesized using local OpenVoice tone conversion conditioned on Dileep Maurya's authorized voice reference, with pitch alignment and normalized levels. Every section is narrated, through Setup and closing at 03:35–04:05. The output is clearly labeled as AI voice matching; similarity to the reference is approximate. The original microphone noise is not mixed into the final track. English subtitles accompany the full narration. A [video guide](docs/VIDEO-TRANSCRIPT.md) and [MP4 download](docs/media/demonstration-full-voice.mp4) are included. A separate personal introduction video covering background and experience is not included.
 
 ## References
 

@@ -1,6 +1,6 @@
 # Demo walkthrough (about 3 minutes)
 
-This is a recording script and repeatable review guide. The completed [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) uses edited live browser footage and Dileep Maurya's supplied recording for its opening, followed by captioned explanations without AI speech. Its actual sequence and technical summaries are documented in [the video guide](VIDEO-TRANSCRIPT.md).
+This is a recording script and repeatable review guide. The completed [demonstration video](https://dileepmaurya800.github.io/Kitchen-Spurs/) has full English narration through Setup and closing, using local AI voice matching based on Dileep Maurya's authorized reference recording. It is synthesized speech with approximate voice similarity, rather than a continuous original recording. Its actual sequence and narration are documented in [the transcript](VIDEO-TRANSCRIPT.md).
 
 ## 0:00–0:30 · Setup and scope
 
